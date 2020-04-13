@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="HomeAutomationIdentityService20190519114609" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\DeveloperProjects\\HomeAutomation\\HomeAutomation\\HomeAutomation\.IdentityService\\obj\\Release\\netcoreapp2\.2\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>
