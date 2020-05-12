@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using HomeAutomation.IdentityService.Features.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using RedBear.LogDNA.Extensions.Logging;
 using RedBear.LogDNA.Extensions.Logging.Web;
 using Swashbuckle.AspNetCore.Swagger;
+using MediatR;
+using HomeAutomation.IdentityService.Services;
 
 namespace HomeAutomation.IdentityService
 {
@@ -29,6 +32,11 @@ namespace HomeAutomation.IdentityService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+           
+            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(AuthenticateClientCommand));
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAny",
@@ -48,6 +56,7 @@ namespace HomeAutomation.IdentityService
 
             logDNAOptions.HostName = "HomeAutomationIdentityService";
             services.AddLogging(loggingBuilder => loggingBuilder.AddLogDNA(logDNAOptions));
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
