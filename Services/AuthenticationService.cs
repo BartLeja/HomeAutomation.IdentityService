@@ -38,7 +38,7 @@ namespace HomeAutomation.IdentityService.Services
             return true;
         }
 
-        public async Task<JwtSecurityToken> CreateToken(string login, string password)
+        public async Task<JwtSecurityToken> CreateToken(string login)
         {
             var claim = new Claim(ClaimTypes.Name, login);
             var claims = new List<Claim> { claim };
@@ -49,6 +49,20 @@ namespace HomeAutomation.IdentityService.Services
                 claims,
                 expires: DateTime.UtcNow.AddDays(30),
                 signingCredentials: SigningCredentials);
+        }
+
+        public async Task<JwtSecurityToken> CreateServiceToServiceToken(string serviceType, string homeAutomationLocalLightSystemId)
+        {
+            var serviceTypeClaim = new Claim(ClaimTypes.Name, serviceType);
+            var serviceIdClaim = new Claim(ClaimTypes.PrimarySid, homeAutomationLocalLightSystemId);
+            var claims = new List<Claim> { serviceTypeClaim, serviceIdClaim };
+
+            return new JwtSecurityToken(
+                 "SignalRAuthenticationSample",
+                 "SignalRAuthenticationSample",
+                 claims,
+                 expires: DateTime.UtcNow.AddDays(30),
+                 signingCredentials: SigningCredentials);
         }
     }
 }

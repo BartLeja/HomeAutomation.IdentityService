@@ -1,11 +1,10 @@
 ﻿using HomeAutomation.IdentityService.Services;
 using MediatR;
-using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HomeAutomation.IdentityService.Features.Authentication
+namespace HomeAutomation.IdentityService.Features.Authentication.ClientAuthentication
 {
     public class AuthenticateClientCommandHandler : IRequestHandler<AuthenticateClientCommand, JwtSecurityToken>
     {
@@ -21,7 +20,7 @@ namespace HomeAutomation.IdentityService.Features.Authentication
         {
              _authenticationService.VerifyIfClientExist(request.Login, request.Password);
 
-            return _authenticationService.CreateToken(request.Login, request.Password);
+            return _authenticationService.CreateToken(request.Login);
         }
     }
 }

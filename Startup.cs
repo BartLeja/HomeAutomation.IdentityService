@@ -1,17 +1,17 @@
 ﻿using System.Text;
-using HomeAutomation.IdentityService.Features.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using RedBear.LogDNA.Extensions.Logging;
-using RedBear.LogDNA.Extensions.Logging.Web;
 using Swashbuckle.AspNetCore.Swagger;
 using MediatR;
 using HomeAutomation.IdentityService.Services;
+using HomeAutomation.IdentityService.ApiKeyAuthentication.Options;
+using HomeAutomation.IdentityService.ApiKeyAuthentication.Extensions;
+using HomeAutomation.IdentityService.ApiKeyAuthentication.Services;
+using HomeAutomation.IdentityService.Features.Authentication.ClientAuthentication;
 
 namespace HomeAutomation.IdentityService
 {
@@ -36,6 +36,7 @@ namespace HomeAutomation.IdentityService
             services.AddMediatR(typeof(Startup));
             services.AddMediatR(typeof(AuthenticateClientCommand));
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IApiKeyService, ApiKeyService>();
 
             services.AddCors(options =>
             {
@@ -50,13 +51,20 @@ namespace HomeAutomation.IdentityService
                 c.SwaggerDoc("v1", new Info { Title = "HomeAutomation IdentityService API", Version = "v1" });
             });
 
-            var logDNAToken = Configuration.GetSection("LogDNAToken").Value;
-            var logDNAOptions = new LogDNAOptions(logDNAToken, LogLevel.Debug)
-                .AddWebItems();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = ApiKeyAuthenticationOptions.DefaultScheme;
+                options.DefaultChallengeScheme = ApiKeyAuthenticationOptions.DefaultScheme;
+            })
+            .AddApiKeySupport(options => { });
 
-            logDNAOptions.HostName = "HomeAutomationIdentityService";
-            services.AddLogging(loggingBuilder => loggingBuilder.AddLogDNA(logDNAOptions));
-        
+            //var logDNAToken = Configuration.GetSection("LogDNAToken").Value;
+            //var logDNAOptions = new LogDNAOptions(logDNAToken, LogLevel.Debug)
+            //    .AddWebItems();
+
+            //logDNAOptions.HostName = "HomeAutomationIdentityService";
+            //services.AddLogging(loggingBuilder => loggingBuilder.AddLogDNA(logDNAOptions));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +88,8 @@ namespace HomeAutomation.IdentityService
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }

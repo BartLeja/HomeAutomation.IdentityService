@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace HomeAutomation.IdentityService.Features.Authentication
+namespace HomeAutomation.IdentityService.Features.Authentication.ClientAuthentication
 {
     public class AuthenticateClientCommand : IRequest<JwtSecurityToken>
     {
