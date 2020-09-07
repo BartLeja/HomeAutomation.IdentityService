@@ -18,7 +18,6 @@ namespace HomeAutomation.IdentityService.Services
 
         public AuthenticationService()
         {
-            //Add id Guid
             _dictionaryCredentials = new Dictionary<string, User>()
             {
                 {

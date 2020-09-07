@@ -7,3 +7,4 @@
 /obj/project.nuget.cache
 /obj/Debug/netcoreapp2.2/.NETCoreApp,Version=v2.2.AssemblyAttributes.cs
 /obj/Debug/netcoreapp2.2/HomeAutomation.IdentityService.genruntimeconfig.cache
+/.vs/HomeAutomation.IdentityService/DesignTimeBuild/.dtbcache.v2
