@@ -28,3 +28,6 @@ E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Debug\net
 E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\bin\Debug\netcoreapp2.2\appsettings.Development.json
 E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\bin\Debug\netcoreapp2.2\appsettings.json
 E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\bin\Debug\netcoreapp2.2\Properties\ServiceDependencies\HomeAutomationIdentityService20190519114609 - Web Deploy\profile.arm.json
+E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Debug\netcoreapp2.2\HomeAutomation.IdentityService.csproj.CoreCompileInputs.cache
+E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Debug\netcoreapp2.2\HomeAutomation.IdentityService.genruntimeconfig.cache

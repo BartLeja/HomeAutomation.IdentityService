@@ -28,3 +28,5 @@ E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Release\n
 E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Release\netcoreapp2.2\HomeAutomation.IdentityService.RazorTargetAssemblyInfo.cache
 E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Release\netcoreapp2.2\HomeAutomation.IdentityService.dll
 E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Release\netcoreapp2.2\HomeAutomation.IdentityService.pdb
+E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Release\netcoreapp2.2\HomeAutomation.IdentityService.csproj.CoreCompileInputs.cache
+E:\DeveloperProjects\HomeAutomation\HomeAutomation.IdentityService\obj\Release\netcoreapp2.2\HomeAutomation.IdentityService.genruntimeconfig.cache
